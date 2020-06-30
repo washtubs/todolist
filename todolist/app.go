@@ -245,7 +245,9 @@ func (a *App) getId(input string) int {
 
 func (a *App) getIds(input string) (ids []int) {
 
-	idGroups := strings.Split(input, ",")
+	// NOTE: this used to be , but I'm not a fan
+	// It's a command line program, each one should be an argument
+	idGroups := strings.Split(input, " ")
 	for _, idGroup := range idGroups {
 		if rangedIds, err := a.parseRangedIds(idGroup); len(rangedIds) > 0 || err != nil {
 			if err != nil {
